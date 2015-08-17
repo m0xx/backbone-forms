@@ -2,7 +2,7 @@
 //FORM
 //==================================================================================================
 
-var Form = Backbone.View.extend({
+var Form = Marionette.ItemView.extend({
 
   events: {
     'submit': function(event) {
@@ -173,7 +173,7 @@ var Form = Backbone.View.extend({
     }
   },
 
-  render: function() {
+  onRender: function() {
     var self = this,
         fields = this.fields,
         $ = Backbone.$;

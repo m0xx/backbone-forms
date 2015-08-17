@@ -1362,6 +1362,7 @@ Form.editors.Text = Form.Editor.extend({
    * @param {String}
    */
   setValue: function(value) {
+    this.value = value;
     this.$el.val(value);
   },
 
@@ -1489,7 +1490,7 @@ Form.editors.Number = Form.editors.Text.extend({
     })();
 
     if (_.isNaN(value)) value = null;
-
+    this.value = value;
     Form.editors.Text.prototype.setValue.call(this, value);
   }
 
@@ -1568,6 +1569,7 @@ Form.editors.Checkbox = Form.editors.Base.extend({
     }else{
       this.$el.prop('checked', false);
     }
+    this.value = !!value;
   },
 
   focus: function() {
@@ -1736,6 +1738,7 @@ Form.editors.Select = Form.editors.Base.extend({
   },
 
   setValue: function(value) {
+    this.value = value;
     this.$el.val(value);
   },
 
@@ -1867,6 +1870,7 @@ Form.editors.Radio = Form.editors.Select.extend({
   },
 
   setValue: function(value) {
+    this.value = value;
     this.$('input[type=radio]').val([value]);
   },
 
@@ -1979,6 +1983,7 @@ Form.editors.Checkboxes = Form.editors.Select.extend({
 
   setValue: function(values) {
     if (!_.isArray(values)) values = [values];
+    this.value = values;
     this.$('input[type=checkbox]').val(values);
   },
 
@@ -2339,6 +2344,7 @@ Form.editors.Date = Form.editors.Base.extend({
    * @param {Date} date
    */
   setValue: function(date) {
+    this.value = date;
     this.$date.val(date.getDate());
     this.$month.val(date.getMonth());
     this.$year.val(date.getFullYear());
@@ -2506,7 +2512,7 @@ Form.editors.DateTime = Form.editors.Base.extend({
    */
   setValue: function(date) {
     if (!_.isDate(date)) date = new Date(date);
-
+    this.value = date;
     this.dateEditor.setValue(date);
 
     this.$hour.val(date.getHours());
